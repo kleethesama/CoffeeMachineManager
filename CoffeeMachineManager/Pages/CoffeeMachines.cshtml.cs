@@ -33,22 +33,14 @@ namespace CoffeeMachineManager.Pages
             CoffeeMachines = _context.CoffeeMachines.ToList();
         }
 
-        public IActionResult OnPostAddCoffeeMachine(string location, string type, string status)
+        public IActionResult OnPostAddCoffeeMachine(CoffeeMachine coffeeMachine)
         {
-            // Validate inputs
-            if (string.IsNullOrEmpty(location) || string.IsNullOrEmpty(type) || string.IsNullOrEmpty(status))
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "All fields are required.");
+                //ModelState.AddModelError("", "All fields are required.");
+                ModelState.AddModelError("", "Something went wrong!");
                 return Page();
             }
-
-            // Create a new coffee machine
-            var coffeeMachine = new CoffeeMachine
-            {
-                Location = location,
-                Type = type,
-                Status = status
-            };
 
             // Add to the database
             _context.CoffeeMachines.Add(coffeeMachine);

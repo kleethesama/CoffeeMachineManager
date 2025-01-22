@@ -13,8 +13,8 @@
                 <!-- Dropdown for Location -->
                 <div class="mb-3">
                     <label asp-for="CoffeeMachine.Location" class="form-label">Location</label>
-                    <select asp-for="CoffeeMachine.Location" class="form-select" asp-items="Html.GetEnumSelectList<CreateCoffeeMachineModel.Locations>()">
-                        <option selected="selected">Select location</option>
+                    <select asp-for="CoffeeMachine.Location" class="form-select" asp-items="Html.GetEnumSelectList<Models.CoffeeMachine.Locations>()">
+                        <option value="" disabled selected>Select location</option>
                     </select>
                     <span asp-validation-for="CoffeeMachine.Location" class="text-danger"></span>
                 </div>
@@ -22,7 +22,7 @@
                 <!-- Dropdown for Type -->
                 <div class="mb-3">
                     <label asp-for="CoffeeMachine.Type" class="form-label">Type</label>
-                    <select asp-for="CoffeeMachine.Type" class="form-select" asp-items="Html.GetEnumSelectList<CreateCoffeeMachineModel.Types>()">
+                    <select asp-for="CoffeeMachine.Type" class="form-select" asp-items="Html.GetEnumSelectList<Models.CoffeeMachine.Types>()">
                         <option value="" disabled selected>Select type</option>
                     </select>
                     <span asp-validation-for="CoffeeMachine.Type" class="text-danger"></span>
@@ -31,11 +31,8 @@
                 <!-- Dropdown for Status -->
                 <div class="mb-3">
                     <label asp-for="CoffeeMachine.Status" class="form-label">Status</label>
-                    <select asp-for="CoffeeMachine.Status" class="form-select">
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                        <option value="Under Maintenance">Under Maintenance</option>
-                        <option value="Out of Service">Out of Service</option>
+                    <select asp-for="CoffeeMachine.Status" class="form-select" asp-items="Html.GetEnumSelectList<Models.CoffeeMachine.MachineStatus>()">
+                        <option value="" disabled selected">Select status</option>
                     </select>
                     <span asp-validation-for="CoffeeMachine.Status" class="text-danger"></span>
                 </div>

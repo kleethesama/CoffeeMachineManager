@@ -16,7 +16,7 @@ namespace CoffeeMachineManager.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-               @"Server=(localdb)\MSSQLLocalDB;Database=CoffeeMachineManager;Trusted_Connection=True;Encrypt=False;MultipleActiveResultSets=true");
+               @"Server=(localdb)\MSSQLLocalDB;Database=CoffeeMachineManager;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

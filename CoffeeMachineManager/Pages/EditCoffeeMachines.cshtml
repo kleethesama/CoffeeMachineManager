@@ -1,7 +1,7 @@
 ﻿@page "{id:int}"
-@model CoffeeMachineManager.Pages.EditCoffeeMachinesModel
+@model EditCoffeeMachinesModel
 
-<div class="d-flex justify-content-center align-items-center vh-100">
+@* <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg" style="width: 30rem;">
         <div class="card-header bg-warning text-center">
             <h3 class="mb-0">Edit Coffee Machine</h3>
@@ -14,14 +14,8 @@
                 <!-- Dropdown for Location -->
                 <div class="mb-3">
                     <label asp-for="CoffeeMachine.Location" class="form-label">Location</label>
-                    <select asp-for="CoffeeMachine.Location" class="form-select">
-                        <option value="" disabled>Select location</option>
-                        @foreach (var location in Model.Locations)
-                        {
-                            <option value="@location" selected="@(location == Model.CoffeeMachine.Location ? "selected" : null)">
-                                @location
-                            </option>
-                        }
+                    <select asp-for="CoffeeMachine.Location" class="form-select" asp-items="Html.GetEnumSelectList<CoffeeMachine.Locations>()">
+                        <option value="" disabled selected>Select location</option>
                     </select>
                     <span asp-validation-for="CoffeeMachine.Location" class="text-danger"></span>
                 </div>
@@ -29,14 +23,8 @@
                 <!-- Dropdown for Type -->
                 <div class="mb-3">
                     <label asp-for="CoffeeMachine.Type" class="form-label">Type</label>
-                    <select asp-for="CoffeeMachine.Type" class="form-select">
-                        <option value="" disabled>Select type</option>
-                        @foreach (var type in Model.Types)
-                        {
-                            <option value="@type" selected="@(type == Model.CoffeeMachine.Type ? "selected" : null)">
-                                @type
-                            </option>
-                        }
+                    <select asp-for="CoffeeMachine.Type" class="form-select" asp-items="Html.GetEnumSelectList<CoffeeMachine.Types>()">
+                        <option value="" disabled selected">Select type</option>
                     </select>
                     <span asp-validation-for="CoffeeMachine.Type" class="text-danger"></span>
                 </div>
@@ -44,11 +32,8 @@
                 <!-- Dropdown for Status -->
                 <div class="mb-3">
                     <label asp-for="CoffeeMachine.Status" class="form-label">Status</label>
-                    <select asp-for="CoffeeMachine.Status" class="form-select">
-                        <option value="Active" selected="@(Model.CoffeeMachine.Status == "Active" ? "selected" : null)">Active</option>
-                        <option value="Inactive" selected="@(Model.CoffeeMachine.Status == "Inactive" ? "selected" : null)">Inactive</option>
-                        <option value="Under Maintenance" selected="@(Model.CoffeeMachine.Status == "Under Maintenance" ? "selected" : null)">Under Maintenance</option>
-                        <option value="Out of Service" selected="@(Model.CoffeeMachine.Status == "Out of Service" ? "selected" : null)">Out of Service</option>
+                    <select asp-for="CoffeeMachine.Status" class="form-select" asp-items="Html.GetEnumSelectList<CoffeeMachine.MachineStatus>()">
+                        <option value="" disabled selected>Select status</option>
                     </select>
                     <span asp-validation-for="CoffeeMachine.Status" class="text-danger"></span>
                 </div>
@@ -63,3 +48,4 @@
         </div>
     </div>
 </div>
+ *@

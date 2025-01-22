@@ -13,35 +13,13 @@ namespace CoffeeMachineManager.Pages
     public class CreateCoffeeMachineModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        [BindProperty]
+        public CoffeeMachine CoffeeMachine { get; set; }
 
-        public CreateCoffeeMachineModel(ApplicationDbContext context)
+        public CreateCoffeeMachineModel(ApplicationDbContext context, CoffeeMachine coffeeMachine)
         {
             _context = context;
-        }
-
-        [BindProperty]
-        public CoffeeMachine CoffeeMachine { get; set; } = new CoffeeMachine();
-
-        // Dropdown options for location and type
-
-        public enum Locations : byte
-        {
-            Lobby,
-            Cafeteria,
-            Breakroom,
-            Reception
-        }
-
-        public enum Types : byte
-        {
-            [Display(Name = "Espresso Machine")]
-            EspressoMachine,
-            [Display(Name = "Drip Coffee Maker")]
-            DripCoffeeMaker,
-            [Display(Name = "Pod Coffee Machine")]
-            PodCoffeeMachine,
-            [Display(Name = "Bean-to-Cup Machine")]
-            BeanToCupMachine
+            CoffeeMachine = coffeeMachine;
         }
 
         public IActionResult OnPost()

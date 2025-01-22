@@ -19,23 +19,6 @@ namespace CoffeeMachineManager.Pages
         [BindProperty]
         public CoffeeMachine CoffeeMachine { get; set; }
 
-        // Dropdown options for Location and Type
-        public List<string> Locations { get; set; } = new List<string>
-        {
-            "Lobby",
-            "Cafeteria",
-            "Breakroom",
-            "Reception"
-        };
-
-        public List<string> Types { get; set; } = new List<string>
-        {
-            "Espresso Machine",
-            "Drip Coffee Maker",
-            "Pod Coffee Machine",
-            "Bean-to-Cup Machine"
-        };
-
         public IActionResult OnGet(int? id)
         {
             if (id == null)

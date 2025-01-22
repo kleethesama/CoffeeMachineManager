@@ -3,6 +3,7 @@ using CoffeeMachineManager.Data;
 using CoffeeMachineManager.Interfaces;
 using CoffeeMachineManager.PasswordHashing;
 using Microsoft.EntityFrameworkCore;
+using CoffeeMachineManager.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Register service for DI.
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IPasswordVerifier, PasswordVerifier>();
+builder.Services.AddTransient<CoffeeMachine>();
 
 // Register the DbContext with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
