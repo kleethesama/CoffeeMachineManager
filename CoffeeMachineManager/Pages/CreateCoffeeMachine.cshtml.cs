@@ -4,6 +4,8 @@ using CoffeeMachineManager.Data;
 using CoffeeMachineManager.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace CoffeeMachineManager.Pages
 {
@@ -21,21 +23,26 @@ namespace CoffeeMachineManager.Pages
         public CoffeeMachine CoffeeMachine { get; set; } = new CoffeeMachine();
 
         // Dropdown options for location and type
-        public List<string> Locations { get; set; } = new List<string>
-        {
-            "Lobby",
-            "Cafeteria",
-            "Breakroom",
-            "Reception"
-        };
 
-        public List<string> Types { get; set; } = new List<string>
+        public enum Locations : byte
         {
-            "Espresso Machine",
-            "Drip Coffee Maker",
-            "Pod Coffee Machine",
-            "Bean-to-Cup Machine"
-        };
+            Lobby,
+            Cafeteria,
+            Breakroom,
+            Reception
+        }
+
+        public enum Types : byte
+        {
+            [Display(Name = "Espresso Machine")]
+            EspressoMachine,
+            [Display(Name = "Drip Coffee Maker")]
+            DripCoffeeMaker,
+            [Display(Name = "Pod Coffee Machine")]
+            PodCoffeeMachine,
+            [Display(Name = "Bean-to-Cup Machine")]
+            BeanToCupMachine
+        }
 
         public IActionResult OnPost()
         {
