@@ -22,9 +22,9 @@
                         foreach (var machine in Model.CoffeeMachines)
                         {
                             <tr>
-                                <td>@machine.Location</td>
-                                <td>@machine.Type</td>
-                                <td>@machine.Status</td>
+                                <td>@Utilities.EnumExtensions.GetDisplayName(machine.Location)</td>
+                                <td>@Utilities.EnumExtensions.GetDisplayName(machine.Type)</td>
+                                <td>@Utilities.EnumExtensions.GetDisplayName(machine.Status)</td>
                                 <td>
                                     <a asp-page="/EditCoffeeMachines" asp-route-id="@machine.Id" class="btn btn-sm btn-warning">Edit</a>
                                     <a asp-page="/DeleteCoffeeMachines" asp-route-id="@machine.Id" class="btn btn-sm btn-danger">Delete</a>

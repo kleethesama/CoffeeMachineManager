@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 
 namespace CoffeeMachineManager.Pages
@@ -13,24 +15,18 @@ namespace CoffeeMachineManager.Pages
     public class CoffeeMachinesModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        public List<CoffeeMachine> CoffeeMachines { get; set; }
 
-        public CoffeeMachinesModel(ApplicationDbContext context)
+        public CoffeeMachinesModel(ApplicationDbContext context, List<CoffeeMachine> coffeeMachines)
         {
             _context = context;
+            CoffeeMachines = coffeeMachines;
         }
-
-        // List of Coffee Machines to display
-        public List<CoffeeMachine> CoffeeMachines { get; set; } = new List<CoffeeMachine>();
-
-        // Dropdown options for locations, types, and statuses
-        public List<string> Locations { get; set; } = new List<string> { "Lobby", "Cafeteria", "Breakroom", "Reception" };
-        public List<string> Types { get; set; } = new List<string> { "Espresso Machine", "Drip Coffee Maker", "Pod Machine", "Bean-to-Cup Machine" };
-        public List<string> Statuses { get; set; } = new List<string> { "Active", "Inactive", "Under Maintenance", "Out of Service" };
 
         public void OnGet()
         {
             // Fetch all coffee machines from the database
-            CoffeeMachines = _context.CoffeeMachines.ToList();
+            CoffeeMachines = [.. _context.CoffeeMachines];
         }
 
         public IActionResult OnPostAddCoffeeMachine(CoffeeMachine coffeeMachine)

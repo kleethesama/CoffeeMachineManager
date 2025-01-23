@@ -21,6 +21,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IPasswordVerifier, PasswordVerifier>();
 builder.Services.AddTransient<CoffeeMachine>();
+builder.Services.AddTransient<List<CoffeeMachine>>();
 
 // Register the DbContext with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
